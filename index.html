@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divya General & Kirana Store</title>
+<style>
+:root{--green:#176b3a;--green2:#23834b;--cream:#f6f8f2;--ink:#17231a;--muted:#647067;--line:#e4e9e1;--white:#fff;--orange:#ffb84d}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1120px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--green);font-size:18px}.logo{width:43px;height:43px;border-radius:13px;background:var(--green);color:white;display:grid;place-items:center;font-size:23px}
+.cartbtn,.primary{border:0;background:var(--green);color:#fff;padding:11px 16px;border-radius:11px;font-weight:700;cursor:pointer}.cartbtn:hover,.primary:hover{background:var(--green2)}
+main{max-width:1120px;margin:auto;padding:24px 20px 60px}
+.hero{background:linear-gradient(115deg,#e3f2df,#fff3d9);border-radius:24px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;overflow:hidden}
+.eyebrow{color:var(--green);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.12;margin:12px 0}.hero p{color:#536456;max-width:540px}
+.hero-art{font-size:95px;text-align:center;filter:drop-shadow(0 10px 10px #a9bba3)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:30px 0 16px}.sectionhead h2{margin:0;font-size:25px}.sectionhead p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.search{flex:1;min-width:190px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff}
+.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 14px;cursor:pointer}.filter.active{background:var(--green);color:#fff;border-color:var(--green)}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px;display:flex;flex-direction:column;min-height:220px}.emoji{height:80px;border-radius:13px;background:#f4f7ef;display:grid;place-items:center;font-size:43px}.card h3{margin:12px 0 2px;font-size:16px}.small{font-size:13px;color:var(--muted)}.price-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:12px}.price{font-weight:800;color:var(--green)}.add{background:#e6f3e7;color:var(--green);border:0;border-radius:9px;padding:8px 12px;font-weight:800;cursor:pointer}.add:hover{background:#d3ebd6}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.info{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px}.info b{display:block;margin-bottom:5px}.info span{font-size:14px;color:var(--muted)}
+footer{background:#143f27;color:#e9f5e9;padding:25px 20px}.foot{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.foot small{color:#c4d8c7}
+.modalback{position:fixed;inset:0;background:#10231799;z-index:10;display:none;align-items:center;justify-content:center;padding:15px}.modalback.open{display:flex}.modal{background:#fff;border-radius:20px;padding:22px;width:min(560px,100%);max-height:90vh;overflow:auto}.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0}.close{border:0;background:#edf2eb;border-radius:9px;padding:8px 12px;cursor:pointer}.cartline{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:#f7f9f5;border-radius:7px;padding:3px 9px;cursor:pointer}.total{display:flex;justify-content:space-between;font-size:18px;font-weight:800;padding:16px 0}.field{display:block;margin:12px 0}.field span{display:block;font-weight:700;font-size:14px;margin-bottom:5px}.field input,.field textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;font:inherit}.hint{background:#fff4d8;padding:10px 12px;border-radius:10px;color:#704b09;font-size:13px;margin:12px 0}.empty{padding:24px;text-align:center;color:var(--muted);grid-column:1/-1}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:25px}.hero-art{font-size:65px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.info-grid{grid-template-columns:1fr}.brand{font-size:15px}.nav{padding:10px 14px}main{padding:18px 14px 45px}}
+@media(max-width:380px){.products{grid-template-columns:1fr}.card{min-height:200px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand"><div class="logo">🛒</div><span>Divya General & Kirana Store</span></div><button class="cartbtn" onclick="openCart()">🛍️ Cart (<span id="cartCount">0</span>)</button></div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">Aapki apni local grocery shop</div><h1>Har ghar ki zaroorat,<br>ek hi jagah!</h1><p>Rozmarra ka kirana samaan aasani se chunein. Apna order website se banayein ya WhatsApp par bhejein.</p><button class="primary" onclick="document.getElementById('productsTitle').scrollIntoView({behavior:'smooth'})">Samaan dekhein ↓</button></div><div class="hero-art" aria-hidden="true">🥦 🛒 🥫<br>🍚 🥛 🍪</div></section>
+<div class="sectionhead" id="productsTitle"><div><h2>Hamare products</h2><p>Demo prices hain — launch se pehle apne asli rates update karein.</p></div></div>
+<div class="tools"><input class="search" id="search" placeholder="🔎 Samaan search karein..." oninput="renderProducts()"></div><div class="filters" id="filters"></div>
+<section class="products" id="products"></section>
+<section class="info-grid"><div class="info"><b>🧺 Rozmarra ka samaan</b><span>Ghar ke liye zaroori grocery items.</span></div><div class="info"><b>📱 Aasaan order</b><span>Cart banayein aur WhatsApp par order bhejein.</span></div><div class="info"><b>📍 Hamari shop</b><span>Imiliya, Charouan, Ballia, UP 221718</span></div></section>
+</main>
+<footer><div class="foot"><div><b>Divya General & Kirana Store</b><br><small>Imiliya, Charouan, Ballia, Uttar Pradesh – 221718</small></div><small>Fresh essentials, friendly service.</small></div></footer>
+<div class="modalback" id="cartModal" onclick="if(event.target===this)closeCart()"><div class="modal"><div class="modalhead"><h2>Aapka cart</h2><button class="close" onclick="closeCart()">Band karein ✕</button></div><div id="cartItems"></div><div class="total"><span>Total (approx.)</span><span id="cartTotal">₹0</span></div><h3>Order details</h3><label class="field"><span>Aapka naam *</span><input id="customerName" placeholder="Naam likhein"></label><label class="field"><span>Mobile number *</span><input id="customerPhone" type="tel" placeholder="10 digit mobile number"></label><label class="field"><span>Delivery address *</span><textarea id="customerAddress" rows="2" placeholder="Gaon, mohalla aur poora pata"></textarea></label><label class="field"><span>Extra note (optional)</span><input id="customerNote" placeholder="Jaise: shaam ko delivery"></label><div class="hint">Order bhejne se pehle shop ka WhatsApp number code mein set karna zaroori hai. Abhi website demo mode mein hai.</div><button class="primary" style="width:100%" onclick="sendOrder()">WhatsApp par order bhejein</button><p class="small">WhatsApp number set hone ke baad hi message shop ko bheja ja sakega. Order confirm karne ke liye shop se baat hogi.</p></div></div>
+<script>
+const WHATSAPP_NUMBER = "91XXXXXXXXXX"; // Isse shop ke WhatsApp number se badlein, jaise 919876543210
+const categories=["Sabhi","Anaj aur daal","Tel aur masale","Snacks","Daily needs"];
+const products=[
+{id:1,name:"Aata (1 kg)",price:40,cat:"Anaj aur daal",emoji:"🌾"},
+{id:2,name:"Chawal (1 kg)",price:55,cat:"Anaj aur daal",emoji:"🍚"},
+{id:3,name:"Arhar daal (1 kg)",price:120,cat:"Anaj aur daal",emoji:"🫘"},
+{id:4,name:"Cheeni (1 kg)",price:48,cat:"Anaj aur daal",emoji:"🍬"},
+{id:5,name:"Cooking oil (1 L)",price:145,cat:"Tel aur masale",emoji:"🫗"},
+{id:6,name:"Namak (1 kg)",price:22,cat:"Tel aur masale",emoji:"🧂"},
+{id:7,name:"Haldi powder",price:30,cat:"Tel aur masale",emoji:"🟡"},
+{id:8,name:"Biscuit packet",price:10,cat:"Snacks",emoji:"🍪"},
+{id:9,name:"Namkeen packet",price:20,cat:"Snacks",emoji:"🥨"},
+{id:10,name:"Bath soap",price:35,cat:"Daily needs",emoji:"🧼"},
+{id:11,name:"Detergent powder",price:65,cat:"Daily needs",emoji:"🫧"},
+{id:12,name:"Tea (250 g)",price:115,cat:"Daily needs",emoji:"🍵"}
+];
+let activeCategory="Sabhi";let cart={};
+function money(n){return "₹"+n.toLocaleString("en-IN")}
+function renderFilters(){document.getElementById("filters").innerHTML=categories.map(c=>`<button class="filter ${c===activeCategory?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("")}
+function setCategory(c){activeCategory=c;renderFilters();renderProducts()}
+function renderProducts(){const q=document.getElementById("search").value.toLowerCase();const list=products.filter(p=>(activeCategory==="Sabhi"||p.cat===activeCategory)&&(p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)));document.getElementById("products").innerHTML=list.length?list.map(p=>`<article class="card"><div class="emoji">${p.emoji}</div><h3>${p.name}</h3><div class="small">${p.cat}</div><div class="price-row"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">+ Add</button></div></article>`).join(""):`<div class="empty">Koi product nahi mila. Doosra naam search karein.</div>`}
+function addToCart(id){cart[id]=(cart[id]||0)+1;updateCart();const b=document.getElementById("cartCount");b.parentElement.animate([{transform:"scale(1)"},{transform:"scale(1.08)"},{transform:"scale(1)"}],{duration:220})}
+function updateCart(){const count=Object.values(cart).reduce((a,b)=>a+b,0);document.getElementById("cartCount").textContent=count;const items=products.filter(p=>cart[p.id]);document.getElementById("cartItems").innerHTML=items.length?items.map(p=>`<div class="cartline"><div><b>${p.name}</b><div class="small">${money(p.price)} each</div></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><b>${cart[p.id]}</b><button onclick="changeQty(${p.id},1)">+</button></div><b>${money(p.price*cart[p.id])}</b></div>`).join(""):`<div class="empty">Aapka cart khaali hai. Pehle products add karein.</div>`;document.getElementById("cartTotal").textContent=money(items.reduce((s,p)=>s+p.price*cart[p.id],0))}
+function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];updateCart()}
+function openCart(){document.getElementById("cartModal").classList.add("open");updateCart()}
+function closeCart(){document.getElementById("cartModal").classList.remove("open")}
+function sendOrder(){const items=products.filter(p=>cart[p.id]);if(!items.length){alert("Pehle cart mein samaan add karein.");return}const name=document.getElementById("customerName").value.trim(),phone=document.getElementById("customerPhone").value.trim(),address=document.getElementById("customerAddress").value.trim(),note=document.getElementById("customerNote").value.trim();if(!name||!phone||!address){alert("Kripya naam, mobile number aur address bharein.");return}if(!/^[0-9+\-\s]{10,15}$/.test(phone)){alert("Kripya sahi mobile number bharein.");return}if(WHATSAPP_NUMBER.includes("X")){alert("Website setup ka ek kaam baaki hai: index.html mein WHATSAPP_NUMBER ko shop ke WhatsApp number se badlein. Number ke aage 91 lagayein, + ya spaces nahi.");return}const total=items.reduce((s,p)=>s+p.price*cart[p.id],0);let msg=`Namaste Divya General & Kirana Store! Mujhe order karna hai:%0A%0A${items.map(p=>`• ${p.name} x ${cart[p.id]} = ₹${p.price*cart[p.id]}`).join("%0A")}%0A%0AApprox. total: ₹${total}%0AName: ${encodeURIComponent(name)}%0AMobile: ${encodeURIComponent(phone)}%0AAddress: ${encodeURIComponent(address)}%0ANote: ${encodeURIComponent(note||"Nahi hai")}%0A%0AKripya order confirm karein.`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank","noopener")}
+renderFilters();renderProducts();updateCart();
+</script>
+</body>
+</html>
